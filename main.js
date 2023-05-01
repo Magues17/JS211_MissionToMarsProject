@@ -9,7 +9,48 @@ const jobTypes = {
   programmer: 'Any Ship!'
 };
 
-// Your code will go here
+
+
+// Build a class for CrewMember.
+// should have a name, a job, a specialSkill and ship upon instantiation
+// Can Enter a ship
+
+class CrewMember {
+  constructor(name, job, specialSkill){
+    this.name = name;
+    this.job = job;
+    this.specialSkill = specialSkill;
+    this.ship = null;
+  }
+
+  enterShip(vessel) {
+    this.ship = vessel;
+    vessel.crew.push(this);
+  }
+}
+
+
+class Ship {
+  constructor(name, type, ability){
+    this.name = name;
+    this.type = type;
+    this.ability = ability;
+    this.crew = [];
+  }
+
+  missionStatement() {
+    if (this.crew.length > 0) {
+      return this.ability;
+    } else {
+      return "Can't perform a mission yet.";
+    }
+  }
+}
+
+let mav = new Ship('Mars Ascent Vehicle', 'MAV', 'Ascend into low orbit');
+
+const crewMember1 = new CrewMember('Rick Martinez', 'pilot', 'chemistry');
+crewMember1.enterShip(mav);
 
 
 
